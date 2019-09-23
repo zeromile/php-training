@@ -1,15 +1,13 @@
 <?php
-require_once('nav.php');
-require_once('content.php');
-require_once('functions.php');
-$loggedin = False;
+$myTitle = "My Site";
 ?>
 <html>
-<head></head>
+<head>
+  <title><?php echo $mytitle; ?></title>
+</head>
 <body>
-<div><?php makeNav($myNav, $loggedin); ?></div>
 <div>
-  <?php makeContent($myContent,0); ?>
+  <h1><?php echo 'Welcome to '.$myTitle ?></h1>
 </div>
 </body>
 </html>
