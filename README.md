@@ -26,5 +26,3 @@ Challenge: Create a 3 page website (```about.php```, ```index.php```, ```contact
 
  - Make a backup of your Vagrant file
     ```$ mv Vagrantfile Vagrantfile```
-
-sss
