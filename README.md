@@ -25,10 +25,7 @@ Challenge: Create a 3 page website (```about.php```, ```index.php```, ```contact
 ## Day 03 ##
 
  - Make a backup of your Vagrant file
-<<<<<<< HEAD
-    ```$ mv Vagrantfile Vagrantfile```
-=======
-    ```$ mv Vagrantfile Vagrantfile.log```
+   - ```$ mv Vagrantfile Vagrantfile.log```
  - Download [Vagrantfile] from the repo to your local ```php-training``` folder (or copy-paste to an empty ```Vagrantfile``` - click on file, view "raw", then file/save)
  - Create a basic form on the ```contact.php``` page
  - Use $_POST/$_GET to pull data into the index.php
@@ -42,4 +39,3 @@ Challenge: Create a 3 page website (```about.php```, ```index.php```, ```contact
     - Insert rows
  - Enable PHP Error Reporting
    - [enable-php-error-reporting.md]
->>>>>>> day04
