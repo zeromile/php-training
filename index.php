@@ -7,9 +7,13 @@ $loggedin = False;
 <html>
 <head></head>
 <body>
-<div><?php makeNav($myNav, $loggedin); ?></div>
-<div>
-  <?php makeContent($myContent,0); ?>
-</div>
+  <nav>
+    <?php makeNav($myNav, $loggedin); ?>
+  </nav>
+  <section>
+    <div>
+        <?php makeContent($myContent,0); ?>
+    </div>
+  </section>
 </body>
 </html>

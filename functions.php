@@ -21,3 +21,19 @@ function makeNav($myNav, $loggedin)
       }
       echo '</ul>';
 }
+/*
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title><?php echo $myNav[0][0]; ?></title>
+<link rel="stylesheet" href="">
+*/
+
+
+/*
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><?php makeContent($myContent,0); ?></title>
+    <link rel="stylesheet" href="">
+  </head>
+  */
