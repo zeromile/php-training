@@ -28,4 +28,9 @@ Challenge: Create a 3 page website (```about.php```, ```index.php```, ```contact
     ```$ mv Vagrantfile Vagrantfile```
  - Download the ```Vagrantfile``` from the repo to your local ```php-training``` folder (or copy-paste to an empty ```Vagrantfile```)
  - Create a form on the ```contact.php``` page
- - 
+ - Use $_POST to pull data
+ - Use "Null Coalescing" ?? operators to set value of variable from $_POST
+ - Work with database
+   - Create a database
+   - Create a table
+   - Insert rows
