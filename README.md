@@ -26,7 +26,7 @@ Challenge: Create a 3 page website (```about.php```, ```index.php```, ```contact
 
  - Make a backup of your Vagrant file
     ```$ mv Vagrantfile Vagrantfile.log```
- - Download [Vagrantfile] from the repo to your local ```php-training``` folder (or copy-paste to an empty ```Vagrantfile``` - click on file, view "raw", then file/save) 
+ - Download [Vagrantfile] from the repo to your local ```php-training``` folder (or copy-paste to an empty ```Vagrantfile``` - click on file, view "raw", then file/save)
  - Create a basic form on the ```contact.php``` page
  - Use $_POST/$_GET to pull data into the index.php
  - Use "Null Coalescing" ```??``` operators to set default value of variable from $_POST
@@ -37,3 +37,5 @@ Challenge: Create a 3 page website (```about.php```, ```index.php```, ```contact
     - Create a database
     - Create a table
     - Insert rows
+ - Enable PHP Error Reporting
+   - [enable-php-error-reporting.md]
