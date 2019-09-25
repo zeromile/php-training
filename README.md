@@ -35,7 +35,7 @@ Challenge: Same teams, on the white boards, before your HTML use php to set two 
 
 Challenge: Use PHP to get the first and last name variables from ```$_POST``` and echo them out as the default content for the two first and last name fields in the form.
 
- ## Day 04 ##
+## Day 04 ##
   - Enable PHP Error Reporting
     - [enable-php-error-reporting](enable-php-error-reporting.md)
   - Databases (what are they? how do they even work?)
