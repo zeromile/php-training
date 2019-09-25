@@ -33,6 +33,6 @@ Challenge: Create a 3 page website (```about.php```, ```index.php```, ```contact
 
 Challenge: Split into teams of 2 and, on the White boards, write out a basic HTML page that uses PHP to set a name variable before the HTML and then echo out that variable in the body of the HTML.
 
-Challenge: Same teams, on the white boards, before your HTML use php to set two names with an array and then use a loop in the body of the HTML to echo each name out in <p> tags.
+Challenge: Same teams, on the white boards, before your HTML use php to set two names with an array and then use a loop in the body of the HTML to echo each name out in ```<p>``` tags.
 
 Challenge: Use PHP to get the first and last name variables from $_POST and echo them out as the default content for the two first and last name fields in the form.
