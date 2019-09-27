@@ -1,6 +1,6 @@
-# Connecting to a Database using PHP #
+# Connecting to a Database using the MySQL CLI #
 
-This will be a walk-through showing you how to use php to connect to a database and select data from a table.
+This will be a walk-through of how to use the MySQL CLI (command line interface) to connect to MySQL, create a database, create a table, and select data from that table.
 
 We need to start by making sure we have a database selected. We'll be using MySQL and PHP's MySQLi connector. There is another method called PDO (PHP Data Objects) which allows you to connect to 12 different database systems but we will start with the MySQLi for now.
 
