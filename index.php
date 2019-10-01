@@ -1,44 +1,26 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "secret";
-
-// Create connection
-$conn = new mysqli($servername,$username,$password);
-
-// Check connection
-if ($conn->connect_error) {
-  die("No worky " . $conn->connect_error);
-} else {
-  $success = "It worked!";
-}
-
+require_once("connect.php");
+require_once("function-new.php");
 $thisPagename = $_GET["page"] ?? "Home";
-
 ?>
-<html>
-<head></head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title><?php makeTitle($conn, $thisPagename); ?></title>
+</head>
 <body>
   <nav>
     <?php
-        $sql = "SELECT pagename FROM test.content";
-        $result = $conn->query($sql);
-        echo "<ul>";
-        while ( $row = $result->fetch_assoc() ) {
-          echo "<li><a href='index.php?page=" . $row['pagename'] . "'>" .$row['pagename']. "</a></li>";
-        }
-        echo "</ul>";
+      makeNav($conn);
      ?>
   </nav>
   <section>
     <div>
         <?php
-          $sql = "SELECT * FROM test.content WHERE pagename = '$thisPagename'";
-          $result = $conn->query($sql);
-          $row = $result->fetch_assoc();
-          echo "<p>" . $row['pagetitle'] . "</p>";
-          echo "<p>" . $row['pagename'] . "</p>";
-          echo $row['pagecontent'];
+          makeContent($conn, $thisPagename);
         ?>
     </div>
   </section>
