@@ -65,15 +65,6 @@ Vagrant.configure("2") do |config|
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use
 
-
-  config.trigger.before :destroy do |trigger|
-    trigger.name = "Impossible trigger, Pre-Destroy"
-    trigger.run_remote = { inline: "rm /vagrant/test.bak" }
-    trigger.run_remote = { inline: "mv /vagrant/test.sql /vagrant/test.bak" }
-    trigger.run_remote = { inline: "mysqldump -u root -psecret test > /vagrant/test.sql" }
-    trigger.on_error = :continue
-  end
-
   config.vm.provision "shell", inline: <<-SHELL
      echo "----------------UPDATES--------"
      sudo apt-get update -y
@@ -86,8 +77,6 @@ Vagrant.configure("2") do |config|
      sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password secret'
      sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password secret'
      sudo apt-get -y install mysql-server
-     mysql -u root -psecret -e "CREATE DATABASE IF NOT EXISTS test"
-     mysql -u root -psecret test < /vagrant/test.sql
      echo "----------------PHP--------"
      sudo apt-get install php7.0 libapache2-mod-php7.0 php7.0-curl php7.0-cli php7.0-dev php7.0-gd php7.0-intl php7.0-mcrypt php7.0-json php7.0-mysql php7.0-opcache php7.0-bcmath php7.0-mbstring php7.0-soap php7.0-xml php7.0-zip -y
      echo "----------------APACHE2-RESTART--------"
