@@ -2,6 +2,7 @@
 require_once("connect.php");
 require_once("function-new.php");
 $thisPagename = $_GET["page"] ?? "Home";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
