@@ -9,7 +9,7 @@ $thisPagename = $_GET["page"] ?? "Home";
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title><?php makeTitle($conn, $thisPagename); ?></title>
+  <title><?php // makeTitle($conn, $thisPagename); ?></title>
 </head>
 <body>
   <nav>
@@ -20,7 +20,7 @@ $thisPagename = $_GET["page"] ?? "Home";
   <section>
     <div>
         <?php
-          makeContent($conn, $thisPagename);
+          // makeContent($conn, $thisPagename);
         ?>
     </div>
   </section>
