@@ -108,3 +108,37 @@ Challenge: Use PHP to get the first and last name variables from ```$_POST``` an
    - ```$thisPagename = $thisPage;```
 - Updated ```makeNav()```
 - Updated ```makeContent()``` to loop through multiple content items
+
+
+## Day 09 ##
+review new Vagranfile updates for redirects
+update .htaccess to allow php files
+Create a login link in nav function
+
+show how variables do not get passed from page to page
+  set $loggedIn
+  echo this in index.php
+  create login.php to echo
+  it fails
+
+set session variable in index first
+echo session variable in login
+
+change nav so that login link only shows when not "logged in" is true
+
+create secret.php
+
+Change connect to redirect to login page whenever someone tries to access secret.php
+
+create users table (id, login, password)
+add login form to login.php
+verify log in
+
+$str = "Hello";
+echo md5($str);
+
+if (md5($str) == "8b1a9953c4611296a827abf8c47804d7")
+  {
+  echo "<br>Hello world!";
+  exit;
+  }
