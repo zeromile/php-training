@@ -105,5 +105,9 @@ Vagrant.configure("2") do |config|
      sudo ln -fs /usr/share/phpmyadmin /vagrant/phpmyadmin
      echo "----------------APACHE2-RESTART--------"
      sudo service apache2 restart
+     sudo a2enmod rewrite
+     sudo service apache2 restart
+     sudo sed -i '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
+     sudo service apache2 restart
    SHELL
 end

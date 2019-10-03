@@ -12,10 +12,10 @@ function makeNav($conn){
   function makeContent($conn, $thisPagename){
     $sql = "SELECT * FROM test.content WHERE pagename = '$thisPagename'";
     $result = $conn->query($sql);
-    $row = $result->fetch_assoc();
-    echo "<p>" . $row['pagetitle'] . "</p>";
-    echo "<p>" . $row['pagename'] . "</p>";
-    echo $row['pagecontent'];
+    while($row = $result->fetch_assoc()){
+      echo $row['contenttitle'];
+      echo $row['content'];
+    }
   } // end of makeContent
 
   function makeTitle($conn, $thisPagename){
