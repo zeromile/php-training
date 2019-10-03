@@ -2,7 +2,7 @@
 session_start();
 require_once("connect.php");
 require_once("function-new.php");
-
+$loggedIn = $_SESSION['loggedin'];
 /*
 this pulls the text from after the first / in the
 url and sets it to an array
@@ -31,7 +31,7 @@ if ($thisPagename == ""){
 <body>
   <nav>
     <?php
-      makeNav($conn);
+      makeNav($conn, $loggedIn);
       echo "<p>" . $loggedIn . "</p>";
      ?>
   </nav>

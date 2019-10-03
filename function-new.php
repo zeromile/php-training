@@ -1,5 +1,5 @@
 <?php
-function makeNav($conn){
+function makeNav($conn, $loggedIn){
     // This creates the navigation from the navigation table
     $sql = "SELECT pagename, pagetitle FROM test.navigation";
     $result = $conn->query($sql);
@@ -7,7 +7,9 @@ function makeNav($conn){
     while ( $row = $result->fetch_assoc() ) {
       echo "<li><a href='" . $row['pagename'] . "'>" .$row['pagetitle']. "</a></li>";
     }
-    echo "<li><a href='login.php'>Log In</a></li>";
+    if ($loggedIn == "not logged in"){
+      echo "<li><a href='login.php'>Log In</a></li>";
+    }
     echo "</ul>";
   } // end of makeNav function
 
