@@ -1,18 +1,33 @@
 <?php
-require_once('nav.php');
-require_once('content.php');
-require_once('functions.php');
-$loggedin = False;
+require_once("connect.php");
+require_once("function-new.php");
+$uriSegments = explode("/", parse_url($_SERVER['REQUEST_URI'],PHP_URL_PATH));
+
+$thisPagename = array_pop($uriSegments);
+if ($thisPagename == ""){
+  $thisPagename = "index";
+}
 ?>
-<html>
-<head></head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title><?php // makeTitle($conn, $thisPagename); ?></title>
+</head>
 <body>
   <nav>
-    <?php makeNav($myNav, $loggedin); ?>
+    <?php
+      makeNav($conn);
+     ?>
   </nav>
   <section>
     <div>
-        <?php makeContent($myContent,0); ?>
+        <?php
+        //echo $thisPagename;
+       makeContent($conn, $thisPagename);
+        ?>
     </div>
   </section>
 </body>
