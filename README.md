@@ -152,8 +152,21 @@ Challenge: Use PHP to get the first and last name variables from ```$_POST``` an
   ```
 
 ## Day 10 ##
-
- - Remove these files: ```contact.php```, ```content.php```, ```nav.php```, ```about.php```   
+ - Add and commit your changes
+  ```
+      $ git add .  
+      $ git commit -m "beginning of day 10"
+  ```   
+ - Create and checkout day10 branch  
+  ```
+  $ git checkout -b day10
+  ```
+  OR  
+  ```
+  $ git branch day10
+  $ git checkout day10
+  ```
+ - Remove these files: ```contact.php```, ```content.php```, ```nav.php```, ```about.php```  
  - remove these two lines from top of ```connect.php```  
  ```
  //$loggedIn = "not logged in";
