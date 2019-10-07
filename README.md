@@ -101,44 +101,52 @@ Challenge: Use PHP to get the first and last name variables from ```$_POST``` an
    - ```error_reporting(E_ALL);```  
 
 
-- Add code to grab page name from URL
-   - ```$uriSegments = explode("/", parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));```
-   - ```$thisPage = array_pop($uriSegments);```
-   - ```if($thisPage=="") { $thisPage="home"; }```
-   - ```$thisPagename = $thisPage;```
-- Updated ```makeNav()```
-- Updated ```makeContent()``` to loop through multiple content items
+ - Add code to grab page name from URL
+```
+        $uriSegments = explode("parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));  
+        $thisPage = array_pop($uriSegments);  
+        if($thisPage=="") {
+          $thisPage="home";
+        }  
+        $thisPagename = $thisPage;
+```
+ - Updated ```makeNav()```
+ - Updated ```makeContent()``` to loop through multiple content items
 
 
 ## Day 09 ##
-review new Vagranfile updates for redirects
-update .htaccess to allow php files
-Create a login link in nav function
+  - Add comments to relevant files
+  - Review new Vagranfile updates for enabling redirects, adding the following to the shell scripts to the APACHE2-RESTART section  
+  ```
+  echo "----------------APACHE2-RESTART--------"
+  sudo a2enmod rewrite  
+  sudo sed -i '/<Directory \\/var\\/www\\/>/,/<\\/Directory>/ s/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf  
+  sudo service apache2 restart  
+  ```
+ - Update ```.htaccess``` to allow php files
+   - Comment this line
+      - ```#RewriteCond %{REQUEST_URI} !=index.php```
+   - And add this line after
+      - ```RewriteCond %{REQUEST_URI} !.*\.php$ [NC]```  
+ - Create a login link in nav function
+ - Show how variables do not get passed from page to page
+   - set $loggedIn
+   - echo this in index.php
+   - create login.php to echo
+   - it fails
+ - Set session variable in index first
+ - Echo session variable in login
+ - Change nav so that login link only shows when not "logged in" is true
+ - Create ```secret.php``` which will display a special message when logged in but redirect back to index.php if not
 
-show how variables do not get passed from page to page
-  set $loggedIn
-  echo this in index.php
-  create login.php to echo
-  it fails
+  ```
+  <?php
+  session_start();  
+  $loggedIn = $_SESSION['loggedin'];  
 
-set session variable in index first
-echo session variable in login
-
-change nav so that login link only shows when not "logged in" is true
-
-create secret.php
-
-Change connect to redirect to login page whenever someone tries to access secret.php
-
-create users table (id, login, password)
-add login form to login.php
-verify log in
-
-$str = "Hello";
-echo md5($str);
-
-if (md5($str) == "8b1a9953c4611296a827abf8c47804d7")
-  {
-  echo "<br>Hello world!";
-  exit;
-  }
+  if ( $loggedIn == "logged in" ) {  
+    echo "Welcome to the secret page. K. That's it. Bye.";  
+    } else {  
+      header("Location: http://192.168.33.10/index");  
+    }  
+  ```
