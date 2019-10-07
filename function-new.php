@@ -9,6 +9,8 @@ function makeNav($conn, $loggedIn){
     }
     if ($loggedIn == "not logged in"){
       echo "<li><a href='login.php'>Log In</a></li>";
+    } else {
+      echo "<li><a href='logout.php'>Log Out</a></li>";
     }
     echo "</ul>";
   } // end of makeNav function

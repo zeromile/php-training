@@ -151,6 +151,75 @@ Challenge: Use PHP to get the first and last name variables from ```$_POST``` an
     }  
   ```
 
+## Day 10 ##
+
+ - Remove these files: ```contact.php```, ```content.php```, ```nav.php```, ```about.php```   
+ - remove these two lines from top of ```connect.php```  
+ ```
+ //$loggedIn = "not logged in";
+ $_SESSION["loggedin"] = "not logged in";
+```
+ - Add logout link in ```function-new.php```  
+ ```
+ if ($loggedIn == "not logged in"){
+   echo "<li><a href='login.php'>Log In</a></li>";
+ } else {
+   echo "<li><a href='logout.php'>Log Out</a></li>";
+ }
+ ```
+ - Create ```logout.php```
+   - ```$ touch logout.php```  
+   - Add this code to ```logout.php```  
+ ```
+ session_start();
+ $_SESSION = array();
+ session_destroy();
+ header("Location: http://192.168.33.10/index");
+ ```
+ - Update line 5 ```index.php```
+ ```
+ $loggedIn = $_SESSION['loggedin'] ?? "not logged in";
+ ```
+ - Revise ```login.php```  
+ ```
+ session_start();
+ require_once('connect.php');
+
+ if (!empty($_POST)) {
+   //  if not logged in then check if login was submitted
+   $_SESSION["loggedin"] = "logged in";
+   $loggedIn = $_SESSION["loggedin"];
+ } else {
+   $loggedIn = $_SESSION["loggedin"] ?? "not logged in";
+ }
+
+ if ($loggedIn == "logged in") {
+   // if "logged in" then redirect back to index.php
+   header("Location: http://192.168.33.10/index");
+ } else {
+   // if not logged in then show login window
+ ?>
+   <!DOCTYPE html>
+   <html lang="en">
+   <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>Document</title>
+   </head>
+   <body>
+     <h1>Login</h1>
+     <form action="login.php" method="post">
+       username: <input type="text" name="username">
+       password: <input type="password" type="password">
+       <input type="submit" value="Login">
+     </form>
+   </body>
+   </html>
+ <?php }
+```
+
+<!---
 create users table (id, login, password)
 add login form to login.php
 verify log in
@@ -163,5 +232,4 @@ if (md5($str) == "8b1a9953c4611296a827abf8c47804d7")
   echo "<br>Hello world!";
   exit;
   }
-
-## Day 10 ##
+-->
