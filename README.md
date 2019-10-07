@@ -152,6 +152,7 @@ Challenge: Use PHP to get the first and last name variables from ```$_POST``` an
   ```
 
 ## Day 10 ##
+Today we will continue adding to our login system.
  - Add and commit your changes
   ```
       $ git add .  
@@ -200,6 +201,7 @@ Challenge: Use PHP to get the first and last name variables from ```$_POST``` an
 
  if (!empty($_POST)) {
    //  if not logged in then check if login was submitted
+   // ---this is a temporary "log in" until we add DB stuff---
    $_SESSION["loggedin"] = "logged in";
    $loggedIn = $_SESSION["loggedin"];
  } else {
@@ -234,7 +236,6 @@ Challenge: Use PHP to get the first and last name variables from ```$_POST``` an
 
 <!---
 create users table (id, login, password)
-add login form to login.php
 verify log in
 
 $str = "Hello";
