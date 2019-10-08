@@ -248,3 +248,6 @@ Today we will continue adding to our login system.
 ```
  - Create ```users``` table (id, login, password)
  - Verify log in using the MD5 Hash function in PHP
+
+## Day 11 ##
+ - Challenge: Add code to your site that will show the user's "realname" when they are logged in to the site
