@@ -201,15 +201,21 @@ Today we will continue adding to our login system.
 
  if (!empty($_POST)){
    // if not logged in then check if login was submitted
-   $sql = "SELECT username, password, realname FROM test.users";
+   $userName = $_POST["username"];
+   $passWord = $_POST["password"];
+   $sql = "SELECT username, password, realname FROM test.users WHERE username = '$userName' LIMIT 1";
+
    $result = $conn->query($sql);
    $row = $result->fetch_assoc();
 
-   if ($_POST["username "] == $row["username"] &&
-     md5($_POST["password"]) == $row["password"])
+   if ($userName == $row["username"] &&
+     md5($passWord) == $row["password"])
      {
        $_SESSION["loggedin"] = "logged in";
        $loggedIn = $_SESSION["loggedin"];
+     } else {
+       echo "Try again";
+       $loggedIn = $_SESSION["loggedin"] ?? "not logged in";
      }
  } else {
    $loggedIn = $_SESSION["loggedin"] ?? "not logged in";
@@ -240,5 +246,5 @@ Today we will continue adding to our login system.
    </html>
  <?php }
 ```
- - Create users table (id, login, password)
+ - Create ```users``` table (id, login, password)
  - Verify log in using the MD5 Hash function in PHP
