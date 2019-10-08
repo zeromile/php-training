@@ -276,4 +276,6 @@ Today we will continue adding to our login system.
    - Horizontal navigation w/ background colors: ```#BF3F7F``` when logged in, ```#7FBF3F``` when logged out
    - Styles applied to ```<h>``` and ```<p>``` tags (that, at the very least, change the default typefaces)
  - Solution: ?  
+ - Change name of ```function-new.php``` to ```functions.php```  
+ - Change the reference to ```functions.php``` in ```index.php```  
  - "Functionalize" the remainder of the code
