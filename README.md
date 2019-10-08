@@ -271,7 +271,7 @@ Today we will continue adding to our login system.
  echo "</ul>";
 ```
 
-## Day 12##
+## Day 12 ##
  - Challenge: Add CSS to your php-training project that does the following:
    - Horizontal navigation w/ background colors: ```#BF3F7F``` when logged in, ```#7FBF3F``` when logged out
    - Styles applied to ```<h>``` and ```<p>``` tags (that, at the very least, change the default typefaces)
