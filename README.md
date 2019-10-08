@@ -251,15 +251,16 @@ Today we will continue adding to our login system.
 
 ## Day 11 ##
  - Challenge: Add code to your site that will show the user's "realname" when they are logged in to the site
- - Add the ```$_SESSION["realname"]``` line to the following code in ```login.php```
+ - Solution: Two lines, yo:
+   - Add the ```$_SESSION["realname"]``` line to the following code in ```login.php```
  ```
   if ($userName == $row["username"] &&
    md5($passWord) == $row["password"])
    {
-     $_SESSION["loggedin"] = "logged in";
+     $_SESSION["loggedin"] = "logged in";  
      $_SESSION["realname"] = $row["realname"]; // add this line
 ```
- - Add the ```$_SESSION["realname"]``` line to the followiung code in ```function-new.php```
+  - Add the ```$_SESSION["realname"]``` line to the followiung code in ```function-new.php```
  ```
  if ($loggedIn == "not logged in"){
    echo "<li><a href='login.php'>Log In</a></li>";
@@ -269,3 +270,9 @@ Today we will continue adding to our login system.
  }
  echo "</ul>";
 ```
+
+## Day 12##
+ - Challenge: Add CSS to your php-training project that does the following:
+   - Horizontal navigation w/ background color
+   - Styles applied to ```<h>``` and ```<p>``` tags (at least change the default typefaces)
+ -
