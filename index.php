@@ -2,7 +2,7 @@
 session_start();
 require_once("connect.php");
 require_once("function-new.php");
-$loggedIn = $_SESSION['loggedin'];
+$loggedIn = $_SESSION['loggedin'] ?? "not logged in";
 /*
 this pulls the text from after the first / in the
 url and sets it to an array

@@ -199,21 +199,28 @@ Today we will continue adding to our login system.
  session_start();
  require_once('connect.php');
 
- if (!empty($_POST)) {
-   //  if not logged in then check if login was submitted
-   // ---this is a temporary "log in" until we add DB stuff---
-   $_SESSION["loggedin"] = "logged in";
-   $loggedIn = $_SESSION["loggedin"];
+ if (!empty($_POST)){
+   // if not logged in then check if login was submitted
+   $sql = "SELECT username, password, realname FROM test.users";
+   $result = $conn->query($sql);
+   $row = $result->fetch_assoc();
+
+   if ($_POST["username "] == $row["username"] &&
+     md5($_POST["password"]) == $row["password"])
+     {
+       $_SESSION["loggedin"] = "logged in";
+       $loggedIn = $_SESSION["loggedin"];
+     }
  } else {
    $loggedIn = $_SESSION["loggedin"] ?? "not logged in";
  }
 
  if ($loggedIn == "logged in") {
-   // if "logged in" then redirect back to index.php
+   // if "logged in" then redirect to index
    header("Location: http://192.168.33.10/index");
  } else {
-   // if not logged in then show login window
- ?>
+   // if not logged in show login form
+   ?>
    <!DOCTYPE html>
    <html lang="en">
    <head>
@@ -223,27 +230,15 @@ Today we will continue adding to our login system.
      <title>Document</title>
    </head>
    <body>
-     <h1>Login</h1>
+     <h1>Login Page</h1>
      <form action="login.php" method="post">
-       username: <input type="text" name="username">
-       password: <input type="password" type="password">
-       <input type="submit" value="Login">
+       Username: <input type="text" name="username"> </br>
+       Password: <input type="password" name="password"> </br>
+       <input type="submit" value="login">
      </form>
    </body>
    </html>
  <?php }
 ```
-
-<!---
-create users table (id, login, password)
-verify log in
-
-$str = "Hello";
-echo md5($str);
-
-if (md5($str) == "8b1a9953c4611296a827abf8c47804d7")
-  {
-  echo "<br>Hello world!";
-  exit;
-  }
--->
+ - Create users table (id, login, password)
+ - Verify log in using the MD5 Hash function in PHP
