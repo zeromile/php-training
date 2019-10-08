@@ -14,7 +14,7 @@ if (!empty($_POST)){
   if ($userName == $row["username"] &&
     md5($passWord) == $row["password"])
     {
-      $_SESSION["`loggedin`"] = "logged in";
+      $_SESSION["loggedin"] = "logged in";
       $_SESSION["realname"] = $row["realname"];
       $loggedIn = $_SESSION["loggedin"];
     } else {
