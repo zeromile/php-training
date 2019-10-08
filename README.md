@@ -249,23 +249,24 @@ Today we will continue adding to our login system.
  - Create ```users``` table (id, login, password)
  - Verify log in using the MD5 Hash function in PHP
 
-## Day 11 ##
+## Day 11 ##  
  - Challenge: Add code to your site that will show the user's "realname" when they are logged in to the site
- - Add the ```$_SESSION["realname"]``` line to the following code in ```login.php```
+ - Solution: Two lines, yo:
+   - Add the ```$_SESSION["realname"]``` line to the following code in ```login.php```
+  ```
+   if ($userName == $row["username"] &&
+    md5($passWord) == $row["password"])
+    {
+      $_SESSION["loggedin"] = "logged in";  
+      $_SESSION["realname"] = $row["realname"]; // add this line
  ```
-  if ($userName == $row["username"] &&
-   md5($passWord) == $row["password"])
-   {
-     $_SESSION["loggedin"] = "logged in";
-     $_SESSION["realname"] = $row["realname"]; // add this line
-```
- - Add the ```$_SESSION["realname"]``` line to the followiung code in ```function-new.php```
+   - Add the ```$_SESSION["realname"]``` line to the followiung code in ```function-new.php```
+  ```
+  if ($loggedIn == "not logged in"){
+    echo "<li><a href='login.php'>Log In</a></li>";
+  } else {
+    echo "<li><a href='logout.php'>Log Out</a></li>";
+    echo "<p> Howdy " . $_SESSION["realname"] . "</p>"; //add this line
+  }
+  echo "</ul>";
  ```
- if ($loggedIn == "not logged in"){
-   echo "<li><a href='login.php'>Log In</a></li>";
- } else {
-   echo "<li><a href='logout.php'>Log Out</a></li>";
-   echo "<p> Howdy " . $_SESSION["realname"] . "</p>"; //add this line
- }
- echo "</ul>";
-```
