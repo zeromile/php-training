@@ -273,9 +273,15 @@ Today we will continue adding to our login system.
 
 ## Day 12 ##
  - Challenge: Add CSS to your php-training project that does the following:
-   - Horizontal navigation w/ background colors: ```#BF3F7F``` when logged in, ```#7FBF3F``` when logged out
+   - Horizontal navigation w/ background colors:
+      - ```#BF3F7F``` when logged in
+      - ```#7FBF3F``` when logged out
    - Styles applied to ```<h>``` and ```<p>``` tags (that, at the very least, change the default typefaces)
+ <!---
  - Solution: ?  
  - Change name of ```function-new.php``` to ```functions.php```  
  - Change the reference to ```functions.php``` in ```index.php```  
+ - Add ```<?php echo $_SERVER['PHP_SELF']; ?>``` in the action portion of the form in ```login.php```  
+ -
  - "Functionalize" the remainder of the code
+--->

@@ -1,4 +1,8 @@
 <?php
+function makeLogin($conn){
+
+}
+
 function makeNav($conn, $loggedIn){
     // This creates the navigation from the navigation table
     $sql = "SELECT pagename, pagetitle FROM test.navigation";
