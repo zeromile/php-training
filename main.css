@@ -1,0 +1,43 @@
+h1, h2, h3, p, a {
+  font-family: sans-serif;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: #fff;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #4CAF50;
+}
+
+section {
+  padding: 0 30px;
+}
+
+.loggedin {
+  background-color: #BF3F7F;
+}
+
+.notloggedin {
+  background-color: #7FBF3F;
+}
+
+.active {
+  background-color: #4CAF50;
+}

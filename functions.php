@@ -1,21 +1,34 @@
 <?php
-function makeLogin($conn){
-
-}
-
-function makeNav($conn, $loggedIn){
+function makeNav($conn, $loggedIn, $thisPagename){
     // This creates the navigation from the navigation table
     $sql = "SELECT pagename, pagetitle FROM test.navigation";
     $result = $conn->query($sql);
-    echo "<ul>";
-    while ( $row = $result->fetch_assoc() ) {
-      echo "<li><a href='" . $row['pagename'] . "'>" .$row['pagetitle']. "</a></li>";
+
+    if($loggedIn == "logged in"){
+      $loggedInClass = "loggedin";
+    } else {
+      $loggedInClass = "notloggedin";
     }
+
+    echo "<ul class='" . $loggedInClass . "'>";
+
+    // outputs the rows of results from the navigation,
+    // setting the active variable for the page that is active
+    while ( $row = $result->fetch_assoc() ) {
+      if ( $thisPagename == $row['pagename']){
+        $active = "active";
+      } else {
+        $active = "";
+      }
+
+      echo "<li class='" . $active . "''><a href='" . $row['pagename'] . "'>" .$row['pagetitle']. "</a></li>";
+    }
+
+    // Outputs the login links
     if ($loggedIn == "not logged in"){
       echo "<li><a href='login.php'>Log In</a></li>";
     } else {
-      echo "<li><a href='logout.php'>Log Out</a></li>";
-      echo "<p>Howdy " . $_SESSION["realname"] . "</p>";
+      echo "<li><a href='logout.php'>Log Out " . $_SESSION["realname"] . "</a></li>";
     }
     echo "</ul>";
   } // end of makeNav function

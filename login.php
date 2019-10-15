@@ -32,7 +32,7 @@ if ($loggedIn == "logged in") {
 } else {
   // if not logged in show login form
   $thisPage = $_SERVER["PHP_SELF"];
-  echo <<<EOD
+  ?>
   <!DOCTYPE html>
   <html lang="en">
   <head>
@@ -43,12 +43,12 @@ if ($loggedIn == "logged in") {
   </head>
   <body>
     <h1>Login Page</h1>
-    <form action='$thisPage' method="post">
+    <form action='<?php echo $thisPage ?>' method="post">
       Username: <input type="text" name="username"> </br>
       Password: <input type="password" name="password"> </br>
       <input type="submit" value="login">
     </form>
   </body>
   </html>
-EOD;
+<?php
 }

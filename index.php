@@ -26,12 +26,13 @@ if ($thisPagename == ""){
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="main.css">
   <title><?php // makeTitle($conn, $thisPagename); ?></title>
 </head>
 <body>
   <nav>
     <?php
-      makeNav($conn, $loggedIn);
+      makeNav($conn, $loggedIn, $thisPagename);
       echo "<p>" . $loggedIn . "</p>";
      ?>
   </nav>

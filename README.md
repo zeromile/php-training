@@ -277,11 +277,147 @@ Today we will continue adding to our login system.
       - ```#BF3F7F``` when logged in
       - ```#7FBF3F``` when logged out
    - Styles applied to ```<h>``` and ```<p>``` tags (that, at the very least, change the default typefaces)
- <!---
- - Solution: ?  
+
+## Day 13 - Part 1: CSS Challenge Solution##
+ - Video at [CSS Challenge Solution](https://youtu.be/XTf1NzeU_UY)
  - Change name of ```function-new.php``` to ```functions.php```  
  - Change the reference to ```functions.php``` in ```index.php```  
  - Add ```<?php echo $_SERVER['PHP_SELF']; ?>``` in the action portion of the form in ```login.php```  
- -
- - "Functionalize" the remainder of the code
---->
+ - Solution to CSS Challenge: Sharing is caring
+    - Create ```main.css```
+    - Add this css:
+    ```
+    h1, h2, h3, p, a {
+    font-family: sans-serif;
+    }
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #333;
+    }
+
+    li {
+      float: left;
+    }
+
+    li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    /* Change the link color to #111 (black) on hover */
+    li a:hover {
+      background-color: #111;
+    }
+
+    section {
+      padding: 0 30px 0 30px;
+    }
+    ```
+ - In ```index.php``` a
+   - Add the link to the ```main.css``` file in the head section with:
+   ```
+   <link rel="stylesheet" href="main.css">
+   ```
+   - Add the ```$thisPageName``` variable into the ```makeNav()``` function call  
+     ```
+     makeNav($conn, $loggedIn, $thisPagename);  
+     ```  
+ - In ```functions.php```:  
+    - Add the ```$thisPagename``` variable into the ```makeNav()``` function parameters to receive the page name  
+    ```
+    function makeNav($conn, $loggedIn, $thisPagename){
+    ```  
+    - Change the background color of the nav by revising the ```makeNav()``` function block to swap a class based on the logged in status of ```$loggedIn``` and echoing out the class in the opening ```<ul>```
+      ```
+      if($loggedIn == "logged in"){
+        $loggedInClass = "class='loggedin'";
+      } else {
+        $loggedInClass = "class='notloggedin'";
+      }
+      echo "<ul " . $loggedInClass . ">";
+      ```
+    - Add an active class to the navigation link by revising the ```makeNav()``` function block to check if the supplied page name is equal to the active page name and setting the echo'd variable ```$active```.  
+    ```
+    while ( $row = $result->fetch_assoc() ) {
+      if ( $thisPagename == $row['pagename']) {
+          $active = "class='active'";
+        } else {
+          $active = "";
+        }
+      echo "<li " . $active . "><a href='" . $row['pagename'] . "'>" .$row['pagetitle']. "</a></li>";
+      }
+    ```
+ - In ```main.css``` add the following classes  
+    ```
+    .active {
+      background-color: #4CAF50;
+    }
+    .loggedin {
+      background-color: #BF3F7F;
+    }
+    .notloggedin {
+      background-color: #7FBF3F;
+    }
+    ```
+
+## Day 13 - Part 2: Intro to Classes ##
+A class is a created object that is a collection of variables and functions (in a class they are referred to as properties and methods). The advantage of putting your functions and variables into a class is that because a class is scoped to the instantiating object your methods and properties will be protected and also available to each other within the class.
+ - Create a new file named ```class.php```
+ - In the ```class.php``` file create the class construct named ```Square```:  
+ ```
+ <?php
+ class MyClass
+ {
+
+ }
+ ```
+ - Now let's add a property:
+ ```
+ class MyClass
+ {
+   /*
+    Create the variable, sets the default
+    value, and makes the variable available
+    to the other class member's methods &
+    properties
+   */
+   public $myname = 'Jason';
+ }
+ ```
+ - Notice that we have added the word ```public``` in front of our variable declaration. This allows the variable to be accessed from outside of the instantiated class, which means it can be used in our general program and not just inside the class.
+ - There are two other variable visibility keywords: ```protected``` and ```private```, which can also be applied to methods. They set the "scope" of the class member they are applied to.
+  - ```public``` - member will be available everywhere (must still be called by associating it with the class)
+  - ```protected``` - member will be available only inside the class itself and inheriting and parent classes
+  - ```private``` - member will be available only within the class that defines the member  
+ - We can see this in action by using the php cli  
+  - ```$ vagrant ssh``` into your running Vagrant box
+  - ```$ cd /vagrant``` // change into your vagrant folder
+  - ```$ php -a```  // start the php CLI  
+ - Type each of the following lines into the CLI (at the ```php >``` prompt)
+   - Load the ```class.php``` file that contains our ```MyClass``` class  
+    - ```php > require('class.php');```
+   - Instantiate the class in a new variable
+    - ```php > $myClass = new MyClass();```  
+   - Echo out the ```$myname``` variable  
+    - ```php > echo $myClass->myname;```
+
+ - Now lets add a method:  
+  ```
+  ...
+  public $myname = 'Jason';  
+  public function printHello()  
+  {  
+    return $this->myname;  
+  }  
+  ...
+  ```  
+ - Notice that there is a new keyword called ```return```. A return will cease execution of the function where the return is called and send any elements after it, in the same statement, back to wherever the function was called from. ```return``` Is not a function/method but a "language construct"
+ - Call the function named ```printHello()``` and echo it's output  
+  - ```php > echo $myClass->printHello();```
