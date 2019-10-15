@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once('connect.php');
+require_once('functions.php');
 
 if (!empty($_POST)){
   // if not logged in then check if login was submitted
@@ -14,7 +15,7 @@ if (!empty($_POST)){
   if ($userName == $row["username"] &&
     md5($passWord) == $row["password"])
     {
-      $_SESSION["`loggedin`"] = "logged in";
+      $_SESSION["loggedin"] = "logged in";
       $_SESSION["realname"] = $row["realname"];
       $loggedIn = $_SESSION["loggedin"];
     } else {
@@ -30,6 +31,7 @@ if ($loggedIn == "logged in") {
   header("Location: http://192.168.33.10/index");
 } else {
   // if not logged in show login form
+  $thisPage = $_SERVER["PHP_SELF"];
   ?>
   <!DOCTYPE html>
   <html lang="en">
@@ -41,11 +43,12 @@ if ($loggedIn == "logged in") {
   </head>
   <body>
     <h1>Login Page</h1>
-    <form action="login.php" method="post">
+    <form action='<?php echo $thisPage ?>' method="post">
       Username: <input type="text" name="username"> </br>
       Password: <input type="password" name="password"> </br>
       <input type="submit" value="login">
     </form>
   </body>
   </html>
-<?php }
+<?php
+}

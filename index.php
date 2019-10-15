@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once("connect.php");
-require_once("function-new.php");
+require_once("functions.php");
 $loggedIn = $_SESSION['loggedin'] ?? "not logged in";
 /*
 this pulls the text from after the first / in the
@@ -26,12 +26,13 @@ if ($thisPagename == ""){
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="main.css">
   <title><?php // makeTitle($conn, $thisPagename); ?></title>
 </head>
 <body>
   <nav>
     <?php
-      makeNav($conn, $loggedIn);
+      makeNav($conn, $loggedIn, $thisPagename);
       echo "<p>" . $loggedIn . "</p>";
      ?>
   </nav>
